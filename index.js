@@ -27,13 +27,15 @@ async function run() {
     const reviewCollection = client.db("restroDB").collection("reviews");
     ///////////////////////////////////////////////////////////////////////
 
-    app.get('/menu', async(req, res) =>{
-        const result = await menuCollection.find().toArray();
-        res.send(result);
-    })
+    app.get("/menu", async (req, res) => {
+      const result = await menuCollection.find().toArray();
+      res.send(result);
+    });
 
-
-
+    app.get("/reviews", async (req, res) => {
+      const result = await reviewCollection.find().toArray();
+      res.send(result);
+    });
 
     ///////////////////////////////////////////////////////////////////////
     await client.db("admin").command({ ping: 1 });
